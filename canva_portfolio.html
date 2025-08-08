@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jani Basha Shaik - AI Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 0.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .typing-animation {
+            border-right: 2px solid #667eea;
+            animation: typing 3s steps(30) infinite;
+        }
+        
+        @keyframes typing {
+            0%, 50% { border-color: #667eea; }
+            51%, 100% { border-color: transparent; }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .achievement-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold gradient-bg bg-clip-text text-transparent">
+                    JBS
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                    <a href="#about" class="text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                    <a href="#projects" class="text-gray-700 hover:text-purple-600 transition-colors">Projects</a>
+                    <a href="#skills" class="text-gray-700 hover:text-purple-600 transition-colors">Skills</a>
+                    <a href="#contact" class="text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                </div>
+                <button class="md:hidden">
+                    <i class="fas fa-bars text-gray-700"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen gradient-bg flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="floating absolute top-20 left-20 w-20 h-20 bg-white rounded-full"></div>
+            <div class="floating absolute top-40 right-32 w-16 h-16 bg-white rounded-full" style="animation-delay: -2s;"></div>
+            <div class="floating absolute bottom-32 left-1/4 w-12 h-12 bg-white rounded-full" style="animation-delay: -4s;"></div>
+        </div>
+        
+        <div class="text-center text-white z-10 px-4">
+            <div class="mb-6">
+                <div class="relative w-40 h-40 mx-auto mb-6">
+                    <div class="w-40 h-40 rounded-full border-4 border-white/30 overflow-hidden bg-white/10 backdrop-blur-sm">
+                        <img id="profileImage" src="" alt="Profile" class="w-full h-full object-cover hidden">
+                        <div id="profilePlaceholder" class="w-full h-full flex items-center justify-center">
+                            <div class="text-center">
+                                <i class="fas fa-user text-6xl text-white/80 mb-2"></i>
+                                <p class="text-white/60 text-sm">Upload Photo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center border-4 border-white cursor-pointer hover:bg-green-600 transition-colors" onclick="document.getElementById('profileUpload').click()">
+                        <i class="fas fa-camera text-white text-lg"></i>
+                    </div>
+                    <input type="file" id="profileUpload" accept="image/*" class="hidden">
+                </div>
+            </div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                Jani Basha Shaik
+            </h1>
+            <p class="text-xl md:text-2xl mb-6 typing-animation">
+                AI Developer & Data Science Professional
+            </p>
+            <p class="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+                Transforming data into intelligent solutions with expertise in Machine Learning, Deep Learning, and AI-powered systems
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#projects" class="bg-white text-purple-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    View My Work
+                </a>
+                <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-purple-600 transition-colors">
+                    Get In Touch
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-gray-900 text-center section-title">About Me</h2>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+                        I'm an analytical and results-focused Data Science professional with expertise in Python, SQL, Machine Learning, and BI tools. I specialize in deploying scalable data solutions and have a proven track record of delivering significant process improvements through automation and AI.
+                    </p>
+                    
+                    <div class="grid grid-cols-3 gap-6 mb-8">
+                        <div class="text-center">
+                            <div class="achievement-number">96%</div>
+                            <p class="text-gray-600 font-medium">AI Accuracy</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="achievement-number">30%</div>
+                            <p class="text-gray-600 font-medium">Process Efficiency</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="achievement-number">15+</div>
+                            <p class="text-gray-600 font-medium">ML Projects</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-4">
+                        <a href="mailto:janibasha.shaik9381@gmail.com" class="text-purple-600 hover:text-purple-800 text-2xl">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/jani-basha-shaik9381" class="text-purple-600 hover:text-purple-800 text-2xl">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/jani9381" class="text-purple-600 hover:text-purple-800 text-2xl">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">
+                            <i class="fas fa-briefcase text-purple-600 mr-3"></i>
+                            Current Role
+                        </h3>
+                        <p class="text-gray-600">Data Science and AI Intern at 360DigiTMG</p>
+                        <p class="text-sm text-gray-500">May 2024 - Present | Hyderabad, TG</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-900">
+                            <i class="fas fa-graduation-cap text-purple-600 mr-3"></i>
+                            Education
+                        </h3>
+                        <p class="text-gray-600">B.Tech in Computer Science</p>
+                        <p class="text-sm text-gray-500">Kallam Haranadhareddy Institute of Technology</p>
+                        <p class="text-sm text-gray-500">Jan 2021 - Apr 2024 | Guntur, AP</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-gray-900 text-center section-title">Featured Projects</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card card-hover">
+                    <div class="mb-4">
+                        <div class="relative mb-4 group">
+                            <div class="w-full h-48 bg-gradient-to-r from-purple-100 to-blue-100 rounded-lg overflow-hidden">
+                                <img id="project1Image" src="" alt="Project 1" class="w-full h-full object-cover hidden">
+                                <div id="project1Placeholder" class="w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-file-alt text-4xl text-purple-500 mb-2"></i>
+                                        <p class="text-purple-600 text-sm">Click to add project image</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center cursor-pointer" onclick="document.getElementById('project1Upload').click()">
+                                <i class="fas fa-camera text-white text-2xl"></i>
+                            </div>
+                            <input type="file" id="project1Upload" accept="image/*" class="hidden">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Automated Legal Document Analysis</h3>
+                        <p class="text-gray-600 mb-4">AI-powered NLP system using Python, Flask, and Streamlit with PyPDF2 and FAISS integration.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Python</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">NLP</span>
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Flask</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-purple-600">96% Accuracy</span>
+                        <span class="text-sm text-gray-500">60% Time Reduction</span>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card card-hover">
+                    <div class="mb-4">
+                        <div class="relative mb-4 group">
+                            <div class="w-full h-48 bg-gradient-to-r from-green-100 to-teal-100 rounded-lg overflow-hidden">
+                                <img id="project2Image" src="" alt="Project 2" class="w-full h-full object-cover hidden">
+                                <div id="project2Placeholder" class="w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-chart-line text-4xl text-green-500 mb-2"></i>
+                                        <p class="text-green-600 text-sm">Click to add project image</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center cursor-pointer" onclick="document.getElementById('project2Upload').click()">
+                                <i class="fas fa-camera text-white text-2xl"></i>
+                            </div>
+                            <input type="file" id="project2Upload" accept="image/*" class="hidden">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Inventory Optimization Tool</h3>
+                        <p class="text-gray-600 mb-4">Forecasting models with ARIMA and XGBoost for apparel retail inventory management.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">ARIMA</span>
+                        <span class="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">XGBoost</span>
+                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Streamlit</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-green-600">20% Accuracy</span>
+                        <span class="text-sm text-gray-500">Real-time Insights</span>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card card-hover">
+                    <div class="mb-4">
+                        <div class="relative mb-4 group">
+                            <div class="w-full h-48 bg-gradient-to-r from-red-100 to-pink-100 rounded-lg overflow-hidden">
+                                <img id="project3Image" src="" alt="Project 3" class="w-full h-full object-cover hidden">
+                                <div id="project3Placeholder" class="w-full h-full flex items-center justify-center">
+                                    <div class="text-center">
+                                        <i class="fas fa-eye text-4xl text-red-500 mb-2"></i>
+                                        <p class="text-red-600 text-sm">Click to add project image</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center cursor-pointer" onclick="document.getElementById('project3Upload').click()">
+                                <i class="fas fa-camera text-white text-2xl"></i>
+                            </div>
+                            <input type="file" id="project3Upload" accept="image/*" class="hidden">
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Hazardous Metal Detection</h3>
+                        <p class="text-gray-600 mb-4">Computer vision system for hazardous material detection using deep learning algorithms.</p>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Computer Vision</span>
+                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Deep Learning</span>
+                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">OpenCV</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold text-red-600">85% Accuracy</span>
+                        <span class="text-sm text-gray-500">90% Risk Reduction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-gray-900 text-center section-title">Technical Skills</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">
+                        <i class="fas fa-code text-purple-600 mr-3"></i>
+                        Programming Languages
+                    </h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">
+                        <i class="fas fa-brain text-purple-600 mr-3"></i>
+                        Machine Learning & AI
+                    </h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Deep Learning</span>
+                        <span class="skill-tag">NLP</span>
+                        <span class="skill-tag">GenAI</span>
+                        <span class="skill-tag">Computer Vision</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">
+                        <i class="fas fa-tools text-purple-600 mr-3"></i>
+                        Tools & Frameworks
+                    </h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">OpenCV</span>
+                        <span class="skill-tag">Pandas</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">
+                        <i class="fas fa-chart-bar text-purple-600 mr-3"></i>
+                        BI & Analytics
+                    </h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Statistical Analysis</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">
+                        <i class="fas fa-cloud text-purple-600 mr-3"></i>
+                        Web & Cloud
+                    </h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">AWS EC2</span>
+                        <span class="skill-tag">AWS S3</span>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 p-6 rounded-xl">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-900">
+                        <i class="fas fa-database text-purple-600 mr-3"></i>
+                        Databases
+                    </h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">Hadoop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-gray-900 text-center section-title">Certifications & Achievements</h2>
+            
+            <!-- Upload Certificates Section -->
+            <div class="mb-16">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Professional Certifications</h3>
+                    <button onclick="document.getElementById('certUpload').click()" 
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center mx-auto space-x-2">
+                        <i class="fas fa-upload"></i>
+                        <span>Upload Certificates</span>
+                    </button>
+                    <input type="file" id="certUpload" accept="image/*,.pdf" multiple class="hidden">
+                    <p class="text-sm text-gray-500 mt-2">Upload your certificate images or PDFs</p>
+                </div>
+                
+                <div id="certificatesContainer" class="relative overflow-hidden bg-white rounded-xl shadow-lg p-6">
+                    <div id="certificateSlider" class="certificate-slider flex transition-transform duration-500 ease-in-out">
+                        <!-- Default certificates will be shown here initially -->
+                        <div class="certificate-slide min-w-full">
+                            <div class="text-center py-12">
+                                <i class="fas fa-certificate text-6xl text-gray-300 mb-4"></i>
+                                <p class="text-gray-500 text-lg">No certificates uploaded yet</p>
+                                <p class="text-gray-400 text-sm">Click "Upload Certificates" to add your certifications</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation dots will be added dynamically -->
+                    <div id="certDots" class="flex justify-center mt-6 space-x-2">
+                        <!-- Dots will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Completion Certificates -->
+            <div class="mb-16">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Project Completion Certificates</h3>
+                    <button onclick="document.getElementById('projectCertUpload').click()" 
+                            class="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors flex items-center mx-auto space-x-2">
+                        <i class="fas fa-upload"></i>
+                        <span>Upload Project Certificates</span>
+                    </button>
+                    <input type="file" id="projectCertUpload" accept="image/*,.pdf" multiple class="hidden">
+                    <p class="text-sm text-gray-500 mt-2">Upload your project completion certificates</p>
+                </div>
+                
+                <div id="projectCertificatesContainer" class="relative overflow-hidden bg-white rounded-xl shadow-lg p-6">
+                    <div id="projectCertificateSlider" class="project-cert-slider flex transition-transform duration-500 ease-in-out">
+                        <!-- Default project certificates will be shown here initially -->
+                        <div class="project-cert-slide min-w-full">
+                            <div class="text-center py-12">
+                                <i class="fas fa-project-diagram text-6xl text-gray-300 mb-4"></i>
+                                <p class="text-gray-500 text-lg">No project certificates uploaded yet</p>
+                                <p class="text-gray-400 text-sm">Click "Upload Project Certificates" to add your project completions</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Navigation dots for project certificates -->
+                    <div id="projectCertDots" class="flex justify-center mt-6 space-x-2">
+                        <!-- Dots will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Achievements -->
+            <div class="bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-semibold mb-6 text-gray-900 text-center">
+                    <i class="fas fa-trophy text-purple-600 mr-3"></i>
+                    Key Achievements
+                </h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="flex items-center p-4 bg-gradient-to-r from-purple-50 to-blue-50 rounded-lg">
+                        <i class="fas fa-star text-yellow-500 text-2xl mr-4"></i>
+                        <span class="text-gray-800">Improved ML model performance by 15%</span>
+                    </div>
+                    <div class="flex items-center p-4 bg-gradient-to-r from-green-50 to-teal-50 rounded-lg">
+                        <i class="fas fa-star text-yellow-500 text-2xl mr-4"></i>
+                        <span class="text-gray-800">Enhanced decision-making efficiency by 25%</span>
+                    </div>
+                    <div class="flex items-center p-4 bg-gradient-to-r from-orange-50 to-red-50 rounded-lg">
+                        <i class="fas fa-star text-yellow-500 text-2xl mr-4"></i>
+                        <span class="text-gray-800">Achieved 96% classification accuracy in NLP</span>
+                    </div>
+                    <div class="flex items-center p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-lg">
+                        <i class="fas fa-star text-yellow-500 text-2xl mr-4"></i>
+                        <span class="text-gray-800">Reduced processing time by 30% with automation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 gradient-bg">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-white mb-4">Let's Work Together</h2>
+                <p class="text-xl text-white/90">
+                    Ready to transform your data into intelligent solutions? Let's discuss your next AI project.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <!-- Contact Information -->
+                <div class="space-y-8">
+                    <div class="grid gap-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white">Email</h3>
+                                <a href="mailto:janibasha.shaik9381@gmail.com" class="text-white/80 hover:text-white transition-colors">
+                                    janibasha.shaik9381@gmail.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white">Phone</h3>
+                                <a href="tel:+919381225735" class="text-white/80 hover:text-white transition-colors">
+                                    +91 9381225735
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                <i class="fab fa-whatsapp text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white">WhatsApp</h3>
+                                <a href="https://wa.me/919381225735" class="text-white/80 hover:text-white transition-colors">
+                                    Chat on WhatsApp
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                                <i class="fab fa-linkedin text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold text-white">LinkedIn</h3>
+                                <a href="https://linkedin.com/in/jani-basha-shaik9381" class="text-white/80 hover:text-white transition-colors">
+                                    Connect with me
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pt-6">
+                        <h3 class="text-xl font-semibold text-white mb-4">Why Choose Me?</h3>
+                        <ul class="space-y-3 text-white/90">
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                96% AI Model Accuracy
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                30% Process Efficiency Improvement
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                15+ Successful ML Projects
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check-circle text-green-400 mr-3"></i>
+                                Expert in Python, AI & Data Science
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20">
+                    <h3 class="text-2xl font-bold text-white mb-6 text-center">Send Message to WhatsApp</h3>
+                    <form id="whatsappForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-white/90 text-sm font-medium mb-2">Full Name *</label>
+                                <input type="text" id="fullName" required 
+                                       class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
+                                       placeholder="Your full name">
+                            </div>
+                            <div>
+                                <label class="block text-white/90 text-sm font-medium mb-2">Email Address *</label>
+                                <input type="email" id="email" required 
+                                       class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
+                                       placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                        
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-white/90 text-sm font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" 
+                                       class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
+                                       placeholder="+91 9876543210">
+                            </div>
+                            <div>
+                                <label class="block text-white/90 text-sm font-medium mb-2">Company/Organization</label>
+                                <input type="text" id="company" 
+                                       class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all"
+                                       placeholder="Your company name">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-white/90 text-sm font-medium mb-2">Project Type *</label>
+                            <select id="projectType" required 
+                                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all">
+                                <option value="" class="text-gray-800">Select project type</option>
+                                <option value="Machine Learning Development" class="text-gray-800">Machine Learning Development</option>
+                                <option value="Data Science Consulting" class="text-gray-800">Data Science Consulting</option>
+                                <option value="AI Model Development" class="text-gray-800">AI Model Development</option>
+                                <option value="NLP Solutions" class="text-gray-800">NLP Solutions</option>
+                                <option value="Computer Vision" class="text-gray-800">Computer Vision</option>
+                                <option value="Data Analytics" class="text-gray-800">Data Analytics</option>
+                                <option value="Full Stack Development" class="text-gray-800">Full Stack Development</option>
+                                <option value="Other" class="text-gray-800">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-white/90 text-sm font-medium mb-2">Budget Range</label>
+                            <select id="budget" 
+                                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all">
+                                <option value="" class="text-gray-800">Select budget range</option>
+                                <option value="Under ₹50,000" class="text-gray-800">Under ₹50,000</option>
+                                <option value="₹50,000 - ₹1,00,000" class="text-gray-800">₹50,000 - ₹1,00,000</option>
+                                <option value="₹1,00,000 - ₹2,50,000" class="text-gray-800">₹1,00,000 - ₹2,50,000</option>
+                                <option value="₹2,50,000 - ₹5,00,000" class="text-gray-800">₹2,50,000 - ₹5,00,000</option>
+                                <option value="Above ₹5,00,000" class="text-gray-800">Above ₹5,00,000</option>
+                                <option value="Let's discuss" class="text-gray-800">Let's discuss</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-white/90 text-sm font-medium mb-2">Project Timeline</label>
+                            <select id="timeline" 
+                                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all">
+                                <option value="" class="text-gray-800">Select timeline</option>
+                                <option value="ASAP (Rush job)" class="text-gray-800">ASAP (Rush job)</option>
+                                <option value="Within 1 month" class="text-gray-800">Within 1 month</option>
+                                <option value="1-3 months" class="text-gray-800">1-3 months</option>
+                                <option value="3-6 months" class="text-gray-800">3-6 months</option>
+                                <option value="6+ months" class="text-gray-800">6+ months</option>
+                                <option value="Flexible" class="text-gray-800">Flexible</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-white/90 text-sm font-medium mb-2">Project Details *</label>
+                            <textarea id="message" required rows="4" 
+                                      class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-transparent transition-all resize-none"
+                                      placeholder="Please describe your project requirements, goals, and any specific technologies you'd like to use..."></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-105 flex items-center justify-center space-x-2">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                            <span>Send to WhatsApp</span>
+                        </button>
+                        
+                        <p class="text-white/70 text-sm text-center">
+                            Your message will be formatted and sent directly to my WhatsApp for quick response
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2024 Jani Basha Shaik. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <span class="text-gray-400">Languages:</span>
+                    <span>English</span>
+                    <span>Hindi</span>
+                    <span>Telugu</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-lg');
+            } else {
+                nav.classList.remove('shadow-lg');
+            }
+        });
+
+        // Animate skill tags on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all skill tags and project cards
+        document.querySelectorAll('.skill-tag, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Image upload functionality
+        let uploadedCertificates = [];
+        let uploadedProjectCertificates = [];
+        let currentCertSlide = 0;
+        let currentProjectCertSlide = 0;
+
+        // Profile image upload
+        document.getElementById('profileUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profileImage = document.getElementById('profileImage');
+                    const placeholder = document.getElementById('profilePlaceholder');
+                    
+                    profileImage.src = e.target.result;
+                    profileImage.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Project image uploads
+        ['project1Upload', 'project2Upload', 'project3Upload'].forEach((uploadId, index) => {
+            document.getElementById(uploadId).addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const projectImage = document.getElementById(`project${index + 1}Image`);
+                        const placeholder = document.getElementById(`project${index + 1}Placeholder`);
+                        
+                        projectImage.src = e.target.result;
+                        projectImage.classList.remove('hidden');
+                        placeholder.classList.add('hidden');
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        });
+
+        // Certificate upload functionality
+        document.getElementById('certUpload').addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedCertificates.push({
+                        name: file.name,
+                        type: file.type,
+                        data: e.target.result
+                    });
+                    updateCertificateSlider();
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        // Project certificate upload functionality
+        document.getElementById('projectCertUpload').addEventListener('change', function(e) {
+            const files = Array.from(e.target.files);
+            files.forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedProjectCertificates.push({
+                        name: file.name,
+                        type: file.type,
+                        data: e.target.result
+                    });
+                    updateProjectCertificateSlider();
+                };
+                reader.readAsDataURL(file);
+            });
+        });
+
+        function updateCertificateSlider() {
+            const slider = document.getElementById('certificateSlider');
+            const dotsContainer = document.getElementById('certDots');
+            
+            slider.innerHTML = '';
+            dotsContainer.innerHTML = '';
+            
+            if (uploadedCertificates.length === 0) {
+                slider.innerHTML = `
+                    <div class="certificate-slide min-w-full">
+                        <div class="text-center py-12">
+                            <i class="fas fa-certificate text-6xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500 text-lg">No certificates uploaded yet</p>
+                            <p class="text-gray-400 text-sm">Click "Upload Certificates" to add your certifications</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            uploadedCertificates.forEach((cert, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'certificate-slide min-w-full';
+                
+                if (cert.type.includes('image')) {
+                    slide.innerHTML = `
+                        <div class="flex flex-col items-center p-6">
+                            <img src="${cert.data}" alt="${cert.name}" class="max-w-full max-h-96 object-contain rounded-lg shadow-lg mb-4">
+                            <p class="text-gray-700 font-semibold">${cert.name}</p>
+                        </div>
+                    `;
+                } else {
+                    slide.innerHTML = `
+                        <div class="flex flex-col items-center p-6">
+                            <div class="w-32 h-32 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                                <i class="fas fa-file-pdf text-red-500 text-4xl"></i>
+                            </div>
+                            <p class="text-gray-700 font-semibold">${cert.name}</p>
+                            <a href="${cert.data}" download="${cert.name}" class="mt-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors">
+                                Download PDF
+                            </a>
+                        </div>
+                    `;
+                }
+                
+                slider.appendChild(slide);
+                
+                // Add dot
+                const dot = document.createElement('button');
+                dot.className = `cert-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-purple-600' : 'bg-gray-300 hover:bg-purple-400'}`;
+                dot.addEventListener('click', () => showCertSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function updateProjectCertificateSlider() {
+            const slider = document.getElementById('projectCertificateSlider');
+            const dotsContainer = document.getElementById('projectCertDots');
+            
+            slider.innerHTML = '';
+            dotsContainer.innerHTML = '';
+            
+            if (uploadedProjectCertificates.length === 0) {
+                slider.innerHTML = `
+                    <div class="project-cert-slide min-w-full">
+                        <div class="text-center py-12">
+                            <i class="fas fa-project-diagram text-6xl text-gray-300 mb-4"></i>
+                            <p class="text-gray-500 text-lg">No project certificates uploaded yet</p>
+                            <p class="text-gray-400 text-sm">Click "Upload Project Certificates" to add your project completions</p>
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+            
+            uploadedProjectCertificates.forEach((cert, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'project-cert-slide min-w-full';
+                
+                if (cert.type.includes('image')) {
+                    slide.innerHTML = `
+                        <div class="flex flex-col items-center p-6">
+                            <img src="${cert.data}" alt="${cert.name}" class="max-w-full max-h-96 object-contain rounded-lg shadow-lg mb-4">
+                            <p class="text-gray-700 font-semibold">${cert.name}</p>
+                        </div>
+                    `;
+                } else {
+                    slide.innerHTML = `
+                        <div class="flex flex-col items-center p-6">
+                            <div class="w-32 h-32 bg-emerald-100 rounded-lg flex items-center justify-center mb-4">
+                                <i class="fas fa-file-pdf text-emerald-500 text-4xl"></i>
+                            </div>
+                            <p class="text-gray-700 font-semibold">${cert.name}</p>
+                            <a href="${cert.data}" download="${cert.name}" class="mt-2 bg-emerald-500 text-white px-4 py-2 rounded-lg hover:bg-emerald-600 transition-colors">
+                                Download PDF
+                            </a>
+                        </div>
+                    `;
+                }
+                
+                slider.appendChild(slide);
+                
+                // Add dot
+                const dot = document.createElement('button');
+                dot.className = `project-cert-dot w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-emerald-600' : 'bg-gray-300 hover:bg-emerald-400'}`;
+                dot.addEventListener('click', () => showProjectCertSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function showCertSlide(index) {
+            const slider = document.getElementById('certificateSlider');
+            const dots = document.querySelectorAll('.cert-dot');
+            
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            currentCertSlide = index;
+            
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-gray-300');
+                    dot.classList.add('bg-purple-600');
+                } else {
+                    dot.classList.remove('bg-purple-600');
+                    dot.classList.add('bg-gray-300');
+                }
+            });
+        }
+
+        function showProjectCertSlide(index) {
+            const slider = document.getElementById('projectCertificateSlider');
+            const dots = document.querySelectorAll('.project-cert-dot');
+            
+            slider.style.transform = `translateX(-${index * 100}%)`;
+            currentProjectCertSlide = index;
+            
+            dots.forEach((dot, i) => {
+                if (i === index) {
+                    dot.classList.remove('bg-gray-300');
+                    dot.classList.add('bg-emerald-600');
+                } else {
+                    dot.classList.remove('bg-emerald-600');
+                    dot.classList.add('bg-gray-300');
+                }
+            });
+        }
+
+        // WhatsApp form functionality
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const company = document.getElementById('company').value;
+            const projectType = document.getElementById('projectType').value;
+            const budget = document.getElementById('budget').value;
+            const timeline = document.getElementById('timeline').value;
+            const message = document.getElementById('message').value;
+            
+            // Validate required fields
+            if (!fullName || !email || !projectType || !message) {
+                alert('Please fill in all required fields (marked with *)');
+                return;
+            }
+            
+            // Format message for WhatsApp
+            let whatsappMessage = `🚀 *New Project Inquiry*\n\n`;
+            whatsappMessage += `👤 *Name:* ${fullName}\n`;
+            whatsappMessage += `📧 *Email:* ${email}\n`;
+            
+            if (phone) {
+                whatsappMessage += `📱 *Phone:* ${phone}\n`;
+            }
+            
+            if (company) {
+                whatsappMessage += `🏢 *Company:* ${company}\n`;
+            }
+            
+            whatsappMessage += `💼 *Project Type:* ${projectType}\n`;
+            
+            if (budget) {
+                whatsappMessage += `💰 *Budget:* ${budget}\n`;
+            }
+            
+            if (timeline) {
+                whatsappMessage += `⏰ *Timeline:* ${timeline}\n`;
+            }
+            
+            whatsappMessage += `\n📝 *Project Details:*\n${message}\n\n`;
+            whatsappMessage += `---\n*Sent from Jani Basha Shaik's Portfolio*`;
+            
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Create WhatsApp URL
+            const whatsappURL = `https://wa.me/919381225735?text=${encodedMessage}`;
+            
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+            
+            // Show success message
+            alert('Redirecting to WhatsApp! Your message has been formatted and is ready to send.');
+            
+            // Optional: Reset form after successful submission
+            // this.reset();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96b5d859532a3f04',t:'MTc1NDU1OTk2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
